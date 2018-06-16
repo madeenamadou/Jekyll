@@ -1,0 +1,97 @@
+#gcc and make
+#sudo yum groupinstall -y "Development Tools" "Legacy Software Development"
+
+# ruby
+#sudo yum install -y ruby
+
+brew install ruby
+
+#sudo yum install -y wget openssl
+#wget https://cache.ruby-lang.org/pub/ruby/2.4/ruby-2.4.1.tar.gz
+#tar -xzf ruby-2.4.1.tar.gz
+
+#openssl
+#gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+
+
+
+
+# First, install Ruby from Home-brew
+brew install ruby
+#link installation files
+brew link ruby
+//brew unlink ruby && brew link ruby
+#list all ruby files that would be deleted
+brew link --overwrite --dry-run ruby
+for i in ${files}; do
+	sudo rm ${i} stop
+done
+#allow modifications
+sudo chmod -R g=rwx /usr/local/include/ruby-2.4.0
+
+#install Ruby interpreter
+\curl -sSL https://get.rvm.io | bash -s stable
+source /Users/youssefamadou/.rvm/scripts/rvm
+
+#install openssl
+rvm pkg install openssl
+#reinstall all rubies
+rvm all do reinstall
+
+#install gems
+gem install jekyll bundler minima jekyll-feed
+
+#start new blog
+jekyll new myblog
+cd myblog
+
+#install gems dependencies
+bundle install
+jekyll build
+
+#deploy your blog
+jekyll serve
+
+
+#source /etc/profile.d/rvm.sh
+source /Users/youssefamadou/.rvm/scripts/rvm
+rvm autolibs enable
+rvm pkg install openssl
+#reinstall all rubies
+rvm all do reinstall
+
+#/usr/local/Cellar/ruby/2.4.2_1/bin/ruby
+
+#cd ruby-2.4.1 && \
+#./configure && make && sudo make install
+
+#export PATH=$PATH:/usr/local/bin
+
+# install with rubygems
+#gem source -l
+gem source -r https://rubygems.org/ && gem source -a http://rubygems.org/
+gem install jekyll bundler minima jekyll-feed openssl
+#gem install github-pages-health-check -v 1.3.4
+
+gem install jekyll -v "3.4.3"
+
+
+#echo "export LC_ALL="en_US.UTF-8"" >> .bashrc
+#echo "export LANG="en_US.UTF-8"" >> .bashrc
+
+jekyll new myblog
+cd myblog
+
+bundle install
+jekyll build
+
+~/myblog $ bundle exec jekyll serve
+
+#send _site folder to s3 or ftp server
+
+#update ruby
+\curl -L https://get.rvm.io | bash -s stable --ruby
+rvm install 2.1.0 --autolibs=enable
+source /Users/youssefamadou/.rvm/scripts/rvm
+gem install bundler
+bundle install
