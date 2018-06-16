@@ -1,0 +1,30 @@
+---
+layout: default
+---
+<!-- Header -->
+{% if page.background %}
+<div class="intro-header" style="background-image: url('{{ page.background | prepend: site.baseurl | replace: '//', '/' }}')">
+{% else %}
+<div class="intro-header">
+{% endif %}
+	<div class="container">
+		<div class="intro-message">
+			<h2 class="">{{ page.title }}</h2>
+			<br>
+			{{ page.date | date: '%d %b %Y' }} &#8729; <span class="meta"><a href="#">{% if page.author %}{{ page.author }}{% else %}{{ site.author }}{% endif %}</a></span>
+		</div>
+	</div>
+</div>
+
+<!-- Content -->
+<div class="content-section-b">
+	<div class="container">
+    	<div class="post">
+    		<div style="display:flex; justify-content:center;">
+				<div class="col-xs-12 col-md-8 col-sm-10">
+					{{ content }}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

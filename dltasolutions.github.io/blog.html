@@ -1,0 +1,32 @@
+---
+# blog page must be named index.html and in its own folder to support pagination
+# https://jekyllrb.com/docs/pagination/
+layout: page
+title: Blog
+background:
+---
+
+<!-- Content -->
+<div class="content-section-b">
+	<div class="container">
+		<div class="bloglist">
+		    <div style="display:flex; justify-content:center;">
+				<div class="col-xs-12 col-md-8 col-sm-10">
+					{% assign post_list = site.posts | group_by_exp:"post", "post.date | date: '%m-%Y'" %}
+					{% for year in post_list %}
+						<div class="item">
+							<h3><time datetime="{{ year.name }}">{{ year.name | date: "%B %Y" }}</time></h3>
+							<br>
+							{% for post in year.items %}
+								<a class="url" href="{{ site.url }}{{ post.url }}">
+									<p class="title">{{ post.title }}</p>
+								</a>
+							{% endfor %}
+						</div>
+						<br>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
